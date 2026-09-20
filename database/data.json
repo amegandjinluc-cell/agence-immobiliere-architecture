@@ -1,0 +1,55 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@immobilier.tg",
+      "password_hash": "$2a$10$abcdefghijklmnopqrstuvwxzy0123456789abcdefghijklmnopqrstuvwxzy01",
+      "created_at": "2026-09-20T16:00:00Z"
+    }
+  ],
+  "biens": [
+    {
+      "id": 1,
+      "type": "Maison",
+      "titre": "Belle villa moderne — Gbojomé, Lomé",
+      "description": "Magnifique villa contemporaine à Gbojomé, quartier résidentiel calme de Lomé. Façade blanche épurée, accès privatif sécurisé, idéale pour famille ou investissement. Proximité commerces et transports.",
+      "prix": 12000000,
+      "devise": "FCFA",
+      "localite": "Lomé",
+      "quartier": "Gbojomé",
+      "statut": "Disponible",
+      "pieces": 4,
+      "superficie_m2": 120,
+      "equipements": "Climatisation, Parking, Jardin",
+      "created_at": "2026-09-20T16:00:00Z",
+      "updated_at": "2026-09-20T16:00:00Z"
+    },
+    {
+      "id": 2,
+      "type": "Maison",
+      "titre": "Confortable maison familiale — Gbojomé",
+      "description": "Maison familiale spacieuse dans le quartier Gbojomé. Pièces lumineuses, cour intérieure, quartier calme et sécurisé. Parfaite pour couple ou petite famille.",
+      "prix": 8500000,
+      "devise": "FCFA",
+      "localite": "Lomé",
+      "quartier": "Gbojomé",
+      "statut": "Disponible",
+      "pieces": 3,
+      "superficie_m2": 90,
+      "equipements": "Parking, Cour",
+      "created_at": "2026-09-20T16:00:00Z",
+      "updated_at": "2026-09-20T16:00:00Z"
+    }
+  ],
+  "photos": [
+    {"id": 1, "bien_id": 1, "url": "/images/house1_main.jpg", "ordre": 0},
+    {"id": 2, "bien_id": 1, "url": "/images/house1_thumb1.jpg", "ordre": 1},
+    {"id": 3, "bien_id": 1, "url": "/images/house1_thumb2.jpg", "ordre": 2},
+    {"id": 4, "bien_id": 1, "url": "/images/house1_thumb3.jpg", "ordre": 3},
+    {"id": 5, "bien_id": 1, "url": "/images/house1_thumb4.jpg", "ordre": 4},
+    {"id": 6, "bien_id": 1, "url": "/images/house1_thumb5.jpg", "ordre": 5},
+    {"id": 7, "bien_id": 1, "url": "/images/house1_thumb6.jpg", "ordre": 6},
+    {"id": 8, "bien_id": 2, "url": "/images/house1_main.jpg", "ordre": 0},
+    {"id": 9, "bien_id": 2, "url": "/images/house1_thumb1.jpg", "ordre": 1}
+  ]
+}
