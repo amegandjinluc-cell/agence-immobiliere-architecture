@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const JWT_SECRET = process.env.JWT_SECRET || 'change-this-secret';
 
 const DB = {
-  users: [{ id: 1, email: 'admin@immobilier.tg', password_hash: '$2a$10$abcdefghijklmnopqrstuvwxzy0123456789abcdefghijklmnopqrstuvwxzy01', created_at: '2026-09-20T16:00:00Z' }],
+  users: [{ id: 1, email: 'admin@immobilier.tg', password_hash: '$2a$10$z7fnZTrR//gdcwk5O6/1EeezwI.90z5ncDgBvqtchXVzkxwxElGb.', created_at: '2026-09-20T16:00:00Z' }],
   biens: [
     { id: 1, type: 'Maison', titre: 'Belle villa moderne — Gbojomé, Lomé', description: 'Magnifique villa contemporaine à Gbojomé, quartier résidentiel calme de Lomé. Façade blanche épurée, accès privatif sécurisé, idéale pour famille ou investissement.', prix: 12000000, devise: 'FCFA', localite: 'Lomé', quartier: 'Gbojomé', statut: 'Disponible', pieces: 4, superficie_m2: 120, equipements: 'Climatisation, Parking, Jardin', created_at: '2026-09-20T16:00:00Z', updated_at: '2026-09-20T16:00:00Z' },
     { id: 2, type: 'Maison', titre: 'Confortable maison familiale — Gbojomé', description: 'Maison familiale spacieuse dans le quartier Gbojomé. Pièces lumineuses, cour intérieure, quartier calme et sécurisé. Parfaite pour couple ou petite famille.', prix: 8500000, devise: 'FCFA', localite: 'Lomé', quartier: 'Gbojomé', statut: 'Disponible', pieces: 3, superficie_m2: 90, equipements: 'Parking, Cour', created_at: '2026-09-20T16:00:00Z', updated_at: '2026-09-20T16:00:00Z' }
