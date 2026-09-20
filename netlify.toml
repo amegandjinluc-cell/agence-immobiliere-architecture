@@ -2,9 +2,6 @@
   publish = "client"
   functions = "netlify/functions"
 
-[[build.plugins]]
-  package = "@netlify/plugin-nextjs"
-
 [[headers]]
   for = "/*"
   [headers.values]
@@ -14,5 +11,5 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "/.netlify/functions/:splat"
+  to = "/.netlify/functions/api/:splat"
   status = 200
