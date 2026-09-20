@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Détail du Bien</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style> body { font-family: 'Inter', sans-serif; } </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="index.html" class="text-xl font-bold text-emerald-700">🏠 Agence Immo</a>
+      <a href="biens.html" class="text-sm text-gray-600 hover:text-emerald-700">← Retour catalogue</a>
+    </div>
+  </nav>
+
+  <main id="bienDetail" class="max-w-5xl mx-auto px-4 py-8">
+    <!-- Chargement -->
+    <div class="text-center py-16 text-gray-400">Chargement…</div>
+  </main>
+
+  <footer class="bg-gray-900 text-gray-400 py-8 text-center text-sm">
+    <p>© 2026 Agence Immobilière</p>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+
+    async function loadBien() {
+      if (!id) { document.getElementById('bienDetail').innerHTML = '<p class="text-center py-16 text-red-400">ID du bien manquant.</p>'; return; }
+      try {
+        const b = await fetchBien(id);
+        const main = document.getElementById('bienDetail');
+        main.innerHTML = `
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Galerie -->
+            <div>
+              <div class="bg-white rounded-xl shadow-sm overflow-hidden mb-4 h-80 flex items-center justify-center text-gray-300">
+                ${b.photos && b.photos.length ? `<img src="${API_BASE}${b.photos[0].url}" alt="${b.titre}" class="w-full h-full object-cover" />` : '📷'}
+              </div>
+              ${b.photos && b.photos.length > 1 ? `
+                <div class="grid grid-cols-3 gap-2">
+                  ${b.photos.slice(1,4).map(p => `<img src="${API_BASE}${p.url}" alt="" class="h-20 w-full object-cover rounded-lg" />`).join('')}
+                </div>` : ''}
+            </div>
+            <!-- Infos -->
+            <div>
+              <h1 class="text-2xl font-bold text-gray-900 mb-2">${b.titre}</h1>
+              <p class="text-gray-500 mb-4">📍 ${b.localite}${b.quartier ? ' · ' + b.quartier : ''}</p>
+              <div class="bg-emerald-50 rounded-xl p-4 mb-6">
+                <span class="text-3xl font-extrabold text-emerald-700">${b.prix.toLocaleString()} ${b.devise || 'FCFA'}</span>
+                <span class="ml-2 text-sm bg-emerald-200 text-emerald-800 px-2 py-1 rounded">${b.statut}</span>
+              </div>
+              <div class="grid grid-cols-3 gap-4 mb-6 text-center">
+                <div class="bg-white rounded-lg p-3 shadow-sm">
+                  <div class="text-lg font-bold">${b.pieces || '—'}</div>
+                  <div class="text-xs text-gray-500">Pièces</div>
+                </div>
+                <div class="bg-white rounded-lg p-3 shadow-sm">
+                  <div class="text-lg font-bold">${b.superficie_m2 || '—'}</div>
+                  <div class="text-xs text-gray-500">m²</div>
+                </div>
+                <div class="bg-white rounded-lg p-3 shadow-sm">
+                  <div class="text-lg font-bold">${b.type}</div>
+                  <div class="text-xs text-gray-500">Type</div>
+                </div>
+              </div>
+              <p class="text-gray-700 mb-6">${b.description || ''}</p>
+              ${b.equipements ? `<p class="text-sm text-gray-500 mb-6">🛠️ ${b.equipements}</p>` : ''}
+              <!-- CTA WhatsApp -->
+              <a href="https://wa.me/228XXXXXXXX?text=Bonjour,%20je%20suis%20intéressé(e)%20par%20le%20bien%20${b.titre}" target="_blank" class="block w-full text-center bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition">
+                💬 Réserver une visite (WhatsApp)
+              </a>
+            </div>
+          </div>
+        `;
+      } catch (err) {
+        document.getElementById('bienDetail').innerHTML = '<p class="text-center py-16 text-red-400">Erreur de chargement.</p>';
+      }
+    }
+    loadBien();
+  </script>
+</body>
+</html>
