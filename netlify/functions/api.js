@@ -36,7 +36,9 @@ async function handler(event) {
   const headers = cors();
   if (event.httpMethod === 'OPTIONS') return { statusCode: 200, headers, body: '' };
 
-  const path = event.path.replace('/.netlify/functions/api', '') || '/';
+  const rawPath = event.path.replace('/.netlify/functions/api', '') || '/';
+  const splat = event.pathParameters?.splat || '';
+  const path = splat ? '/' + splat : rawPath;
   const parts = path.split('/').filter(Boolean);
 
   // POST /auth/login

@@ -23,9 +23,6 @@ functions = "/home/amegandjinluc/immobilier-platform/netlify/functions"
 
 [build.services]
 
-[[build.plugins]]
-package = "@netlify/plugin-nextjs"
-
 [functions]
 
 [functions."*"]
@@ -40,7 +37,7 @@ Access-Control-Allow-Headers = "Content-Type, Authorization"
 
 [[redirects]]
 from = "/api/*"
-to = "/.netlify/functions/:splat"
+to = "/.netlify/functions/api/:splat"
 status = 200.0
 force = false
 
